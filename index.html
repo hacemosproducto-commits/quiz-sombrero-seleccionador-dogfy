@@ -713,206 +713,206 @@
 </div>
 
 <script>
-  // ========== QUESTION POOL (20 questions, IT-focused with 2 PM comedy) ==========
+  // ========== QUESTION POOL (20 questions, teamwork-focused) ==========
   const pool = [
     {
       id: 1,
-      q: "\"En mi local funciona.\" Un compi te lo suelta cuando falla en producción. Tu reacción real:",
+      q: "Un compi lleva dos días atascado y no lo dice en la daily. Te enteras por casualidad. Tú:",
       options: [
-        { letter: "A", text: "\"Vale, lo despliego yo mismo y lo miro allí.\"" },
-        { letter: "B", text: "\"Sentémonos 10 min, lo miramos juntos y salimos con algo.\"" },
-        { letter: "C", text: "\"Diff entre entornos: variables, versiones, caché. Empezamos por ahí.\"" },
-        { letter: "D", text: "\"¿Qué usuario ve el fallo y cuánto pesa? Priorizamos y actuamos.\"" }
+        { letter: "A", text: "Le pincho directamente: \"cuéntame qué pasa, te echo un cable\"." },
+        { letter: "B", text: "Le escribo por privado, con tacto, para no señalarle en el grupo." },
+        { letter: "C", text: "Le pregunto qué ha intentado ya, para no duplicar caminos." },
+        { letter: "D", text: "Le ayudo si es rápido. Si no, aviso a la lead. No soy su manager." }
       ]
     },
     {
       id: 2,
-      q: "Alguien del equipo ha hecho `git push --force` a main. Tu primera reacción:",
+      q: "En el reparto de tareas del sprint hay una que nadie quiere coger. Tú:",
       options: [
-        { letter: "A", text: "Rollback ya. Luego hablamos sin dramatizar." },
-        { letter: "B", text: "Le pregunto qué ha pasado. Todos hemos estado ahí." },
-        { letter: "C", text: "Abro un post-mortem escrito antes incluso de arreglarlo del todo." },
-        { letter: "D", text: "\"Que no vuelva a pasar\" + branch protection activada esta tarde." }
+        { letter: "A", text: "\"Yo la cojo. Alguien tiene que hacerlo\"." },
+        { letter: "B", text: "\"La partimos entre dos, así no le cae entera a nadie\"." },
+        { letter: "C", text: "\"¿Por qué nadie la quiere? A ver qué no estamos viendo\"." },
+        { letter: "D", text: "\"Que la coja quien tenga menos carga esta semana\"." }
       ]
     },
     {
       id: 3,
-      q: "Un compi abre un PR titulado \"WIP: cambios varios\". 40 archivos tocados, cero descripción. Tú:",
+      q: "Un compi te pide ayuda cuando tú también vas hasta arriba con tu tarea. Tú:",
       options: [
-        { letter: "A", text: "Le pido que lo divida en trozos. Con firmeza." },
-        { letter: "B", text: "Le pregunto por Slack si me cuenta primero qué pretende." },
-        { letter: "C", text: "Le pongo 3 preguntas en el PR: qué problema, por qué así, cómo se prueba." },
-        { letter: "D", text: "Cierro el PR: \"lo abres cuando sepas qué quieres que revise\"." }
+        { letter: "A", text: "Paro 20 min. Su bloqueo desatasca más que mi tarea seguir." },
+        { letter: "B", text: "Le atiendo. Siempre. Ya recupero yo luego." },
+        { letter: "C", text: "Le pregunto qué necesita exactamente antes de decir cuánto tiempo puedo." },
+        { letter: "D", text: "\"Te ayudo en 45 minutos\". Prioridad la tengo yo ahora." }
       ]
     },
     {
       id: 4,
-      q: "Merge conflict de 400 líneas con un compi de otro equipo. Tu movida:",
+      q: "Alguien del equipo se lleva mérito público por algo en lo que tú aportaste mucho. Tu reacción:",
       options: [
-        { letter: "A", text: "\"Me pongo. Yo lo saco.\"" },
-        { letter: "B", text: "\"Lo hacemos juntos 15 min y salimos con algo.\"" },
-        { letter: "C", text: "Voy commit a commit entendiendo la intención de cada parte." },
-        { letter: "D", text: "Acepto todo lo suyo, luego PR pequeño con mis cambios encima." }
+        { letter: "A", text: "Lo digo en el momento: \"esta parte la aporté yo también\"." },
+        { letter: "B", text: "Lo dejo pasar por no montar. La próxima me apunto yo primero." },
+        { letter: "C", text: "Hablo con él después, en privado, para entender por qué lo contó así." },
+        { letter: "D", text: "Me aseguro de que la próxima vez el mérito quede por escrito." }
       ]
     },
     {
       id: 5,
-      q: "Un compañero mete un PR de 900 líneas un miércoles. Tú:",
+      q: "Un compañero está claramente quemado. Se le nota en las dailies. Tú:",
       options: [
-        { letter: "A", text: "\"Me lo llevo. Lo reviso esta noche.\"" },
-        { letter: "B", text: "\"Le pregunto si podemos partirlo. Con mucho cariño.\"" },
-        { letter: "C", text: "Le pongo 47 comentarios. Es lo que se merece." },
-        { letter: "D", text: "Approve si compila y hay tests. Al siguiente PR." }
+        { letter: "A", text: "Le abordo directo: \"¿cómo estás? ¿Cómo estás de verdad?\"" },
+        { letter: "B", text: "Le invito a un café y saco el tema con calma." },
+        { letter: "C", text: "Observo un par de días más para tener contexto antes de intervenir." },
+        { letter: "D", text: "Se lo cuento a la lead por privado. Yo no soy su manager." }
       ]
     },
     {
       id: 6,
-      q: "Otro compi mete un commit con mensaje \"asdf\". Tú:",
+      q: "Un compi mete un bug tonto en producción. La retro lo saca. Tu postura pública:",
       options: [
-        { letter: "A", text: "Le pincho por Slack: \"ese mensaje es de traca\"." },
-        { letter: "B", text: "Se lo digo por privado, sin humillar en el canal." },
-        { letter: "C", text: "Abro el diff y ni miro el mensaje. Bloqueo cognitivo." },
-        { letter: "D", text: "Apruebo. La reeducación es una carrera larga." }
+        { letter: "A", text: "\"Ha pasado. Aprendemos. Siguiente. Sin drama\"." },
+        { letter: "B", text: "\"A todos nos ha pasado. Veamos cómo prevenirlo entre todos\"." },
+        { letter: "C", text: "\"Analicemos el proceso, no la persona. ¿Dónde fallaron las salvaguardas?\"" },
+        { letter: "D", text: "\"¿Nos afecta a objetivos o es un aprendizaje que se queda dentro?\"" }
       ]
     },
     {
       id: 7,
-      q: "Empiezas a leer un archivo legacy y encuentras: \"// no toques esto, no sé por qué funciona\". Tú:",
+      q: "Dos compañeros no se ponen de acuerdo en una decisión técnica. Nadie cede. Tú:",
       options: [
-        { letter: "A", text: "Reto aceptado. Hoy lo entiendo o no me llamo como me llamo." },
-        { letter: "B", text: "Respeto la advertencia. Rodeo. Otra vía." },
-        { letter: "C", text: "Abro git blame. Empieza la arqueología." },
-        { letter: "D", text: "Documento que aquí hay dragones y sigo mi camino." }
+        { letter: "A", text: "Corto: \"decidimos ya, con lo que sabemos. Iteramos si falla\"." },
+        { letter: "B", text: "Modero: \"escuchemos los dos argumentos completos, sin interrumpirse\"." },
+        { letter: "C", text: "\"Escribamos los trade-offs en un doc y decidimos con criterio, no con voz\"." },
+        { letter: "D", text: "\"¿Cuál desbloquea el sprint hoy? Ese gana por defecto\"." }
       ]
     },
     {
       id: 8,
-      q: "El `npm install` (o el equivalente) te falla por algo random. Tu ritual:",
+      q: "Un new joiner pregunta algo muy básico en el canal público del equipo. Tú:",
       options: [
-        { letter: "A", text: "`rm -rf node_modules && npm i`. El clásico." },
-        { letter: "B", text: "Pregunto al canal si a alguien más le pasa." },
-        { letter: "C", text: "Leo el error hasta el final. Todo tiene una razón." },
-        { letter: "D", text: "Cambio de versión de Node y vuelvo a intentar. Lo demás es perder tiempo." }
+        { letter: "A", text: "Le respondo yo con el detalle que necesite." },
+        { letter: "B", text: "Le respondo con cariño y le enlazo el onboarding." },
+        { letter: "C", text: "Le respondo y de paso escribo un doc para que la próxima no pregunte igual." },
+        { letter: "D", text: "Le respondo con un link. Que aprenda a buscar, es la mejor lección." }
       ]
     },
     {
       id: 9,
-      q: "Configurar el entorno de dev de un proyecto que llevas 6 meses sin tocar. Tu experiencia real:",
+      q: "Alguien pide ayuda en Slack y en 20 minutos nadie ha contestado. Tú:",
       options: [
-        { letter: "A", text: "30 minutos. Sigo el README y para adelante." },
-        { letter: "B", text: "Un día, y de paso actualizo el README para el siguiente." },
-        { letter: "C", text: "Tres días descubriendo por qué el README está mal desde 2023." },
-        { letter: "D", text: "Le pido al que ya lo tiene funcionando que me clone su carpeta." }
+        { letter: "A", text: "Le respondo yo, aunque no sea mi área." },
+        { letter: "B", text: "Pongo un \"lo veo\" y le escribo por privado si puedo echar mano." },
+        { letter: "C", text: "Le hago una pregunta que le ayude a autoresponderse mientras alguien va." },
+        { letter: "D", text: "Miro quién de los online es el más apropiado y le hago tag directamente." }
       ]
     },
     {
       id: 10,
-      q: "Copilot / Cursor te propone una solución que parece buena. Tu instinto real:",
+      q: "Un compañero propone en el planning una solución que ves regular. Reaccionas:",
       options: [
-        { letter: "A", text: "Si compila, funciona. Adelante." },
-        { letter: "B", text: "La leo entera y le pongo tests antes de aceptar." },
-        { letter: "C", text: "La reescribo a mi manera. Seguro que hay una mejor." },
-        { letter: "D", text: "La uso solo si me ahorra tiempo real medible." }
+        { letter: "A", text: "Lo digo: \"no lo veo, te cuento por qué\"." },
+        { letter: "B", text: "Le pregunto más antes de contradecir. Igual me falta contexto." },
+        { letter: "C", text: "Presento otra opción con trade-offs escritos, no con opinión." },
+        { letter: "D", text: "\"Depende del tiempo. Si desbloquea el sprint, adelante\"." }
       ]
     },
     {
       id: 11,
-      q: "Deploy del viernes a las 16:47. Alguien pregunta \"¿lo hacemos?\". Tu voto:",
+      q: "Un compañero cae de baja y hay que repartir sus tareas. Tú:",
       options: [
-        { letter: "A", text: "\"Sí. Si está probado, sale.\"" },
-        { letter: "B", text: "\"Depende de quién esté de guardia este finde.\"" },
-        { letter: "C", text: "\"Sí, pero con feature flag y monitorización activa.\"" },
-        { letter: "D", text: "\"No. Lunes por la mañana. No hay más que hablar.\"" }
+        { letter: "A", text: "\"Yo cojo la más gorda. Vamos\"." },
+        { letter: "B", text: "\"Repartamos según carga, sin que nadie se ahogue\"." },
+        { letter: "C", text: "\"Revisemos qué tareas eran suyas y cuáles pueden esperar\"." },
+        { letter: "D", text: "\"Priorizamos las que impactan más. Lo demás, cuando vuelva\"." }
       ]
     },
     {
       id: 12,
-      q: "Bug reportado con el texto: \"no funciona\". Sin pasos, sin screenshot, sin nada. Tú:",
+      q: "El sprint sale genial. Alguien pregunta \"¿cómo lo habéis conseguido?\". Tu respuesta:",
       options: [
-        { letter: "A", text: "Le pido por Slack los pasos exactos. Sin drama." },
-        { letter: "B", text: "Intento reproducirlo por mi cuenta. Me curro yo el contexto." },
-        { letter: "C", text: "Devuelvo el ticket pidiendo información. Sin repro no se toca." },
-        { letter: "D", text: "\"¿Qué se rompe en negocio?\" antes de invertir un minuto." }
+        { letter: "A", text: "\"Nos remangamos, punto\"." },
+        { letter: "B", text: "\"Trabajo de equipo. Ha sido de todos\"." },
+        { letter: "C", text: "\"Estimamos mejor y priorizamos con criterio\"." },
+        { letter: "D", text: "\"Peleamos que entrara solo lo importante. El resto es consecuencia\"." }
       ]
     },
     {
       id: 13,
-      q: "Producción se cae un domingo por la noche. Suena la notificación. Tú:",
+      q: "Un compañero teletrabaja y no responde a mensajes en horas. Tú:",
       options: [
-        { letter: "A", text: "Me pongo. Alguien tiene que empezar." },
-        { letter: "B", text: "Miro el grupo de guardia. Coordino con quien esté online." },
-        { letter: "C", text: "Dashboards antes de tocar nada. Entender primero." },
-        { letter: "D", text: "Aviso arriba, evalúo criticidad real, y decido si es cosa de YA." }
+        { letter: "A", text: "Le llamo directamente al teléfono. No espero más." },
+        { letter: "B", text: "Espero. Si es algo puntual, seguro que tiene motivo." },
+        { letter: "C", text: "Miro si hay indicios en Slack de qué está haciendo antes de preocuparme." },
+        { letter: "D", text: "Le mando lo que necesito con deadline claro. Que responda cuando pueda." }
       ]
     },
     {
       id: 14,
-      q: "Alguien encuentra un `console.log(\"aquí\")` tuyo en producción. Tu reacción honesta:",
+      q: "En la retro alguien saca un tema incómodo que te afecta a ti. Tu reacción real:",
       options: [
-        { letter: "A", text: "Lo quito y ya está. Sin más." },
-        { letter: "B", text: "Perdón general al canal y PR con el fix ahora." },
-        { letter: "C", text: "Añado una regla de lint para que no vuelva a pasar." },
-        { letter: "D", text: "Confirmo primero que ese log no está aportando telemetría útil." }
+        { letter: "A", text: "Lo abordo de frente. Prefiero hablarlo a rumiarlo una semana." },
+        { letter: "B", text: "Escucho hasta el final antes de responder. No quiero saltar defensiva." },
+        { letter: "C", text: "Pregunto ejemplos concretos antes de aceptarlo como cierto." },
+        { letter: "D", text: "Reencuadro a proceso: \"¿qué cambiamos en el flujo para que no pase?\"" }
       ]
     },
     {
       id: 15,
-      q: "Un test lleva semanas fallando aleatoriamente en CI. Reaccionas:",
+      q: "Tu lead técnico dice algo con lo que no estás de acuerdo delante del equipo. Tú:",
       options: [
-        { letter: "A", text: "Le meto mano hoy. Se acabó ejecutar el workflow tres veces." },
-        { letter: "B", text: "Pregunto quién lo escribió por si tiene contexto que ayude." },
-        { letter: "C", text: "Documento el patrón de fallo antes de tocar nada." },
-        { letter: "D", text: "Lo skippo con un TODO y ticket prioridad baja. Otro día." }
+        { letter: "A", text: "Lo digo ahí mismo, con respeto: \"yo lo veo distinto, mira\"." },
+        { letter: "B", text: "Callo en público. Se lo digo en el 1:1 después, más suave." },
+        { letter: "C", text: "Pregunto para entender su razonamiento antes de contradecir." },
+        { letter: "D", text: "Espero a ver si alguien más lo cuestiona. Si no, lo saco yo con datos." }
       ]
     },
     {
       id: 16,
-      q: "En un PR de un compi ves una función llamada `doStuff()`. Sin comentarios. Tú:",
+      q: "El equipo decide quién va a un evento fuera de la oficina. Solo cabe uno. Tú:",
       options: [
-        { letter: "A", text: "Renombro yo en un PR pequeño y lo mando." },
-        { letter: "B", text: "Le sugiero dos nombres mejores en el review." },
-        { letter: "C", text: "Le pongo un JSDoc porque el nombre no lo voy a arreglar solo." },
-        { letter: "D", text: "Si funciona y no la va a tocar nadie más, la dejo. Batallas justas." }
+        { letter: "A", text: "\"Yo voy, si nadie más lo pide\"." },
+        { letter: "B", text: "\"Que vaya quien más ilusión le haga, o quien nunca haya ido\"." },
+        { letter: "C", text: "\"Decidamos según qué gana el equipo, no la persona\"." },
+        { letter: "D", text: "\"Que vaya quien sepa traer algo útil de vuelta\"." }
       ]
     },
     {
       id: 17,
-      q: "La CI lleva 40 minutos ejecutándose para tu PR. Reaccionas:",
+      q: "Un compi te da feedback poco pulido. Te sienta regular. Reaccionas por dentro:",
       options: [
-        { letter: "A", text: "Sigo con otra cosa. No me quedo mirándola." },
-        { letter: "B", text: "Aviso al canal por si a alguien más le pasa hoy." },
-        { letter: "C", text: "Abro la build, miro qué step se clava y por qué." },
-        { letter: "D", text: "Le paso el marrón a DevOps. Que se ocupe quien es su marco." }
+        { letter: "A", text: "Lo agradezco en el momento, aunque duela. La forma importa menos." },
+        { letter: "B", text: "Lo agradezco, y en frío decido qué es útil y qué se descarta." },
+        { letter: "C", text: "Le pido ejemplos concretos para entender qué está señalando exactamente." },
+        { letter: "D", text: "Filtro. Me quedo con lo procesable, descarto el resto sin drama." }
       ]
     },
     {
       id: 18,
-      q: "Un new joiner pregunta \"¿por qué usamos X y no Y?\". X es una decisión de hace 4 años. Le contestas:",
+      q: "En las reuniones hay un compi que casi nunca habla. La lead te pregunta qué opinas. Tú:",
       options: [
-        { letter: "A", text: "\"Porque cuando lo elegimos era la mejor opción. Y punto.\"" },
-        { letter: "B", text: "\"Buena pregunta, te lo explico con calma\", y saco tiempo." },
-        { letter: "C", text: "*inhala* \"Depende. Cuando lo elegimos había estos trade-offs…\"" },
-        { letter: "D", text: "\"Porque cambiarlo ahora nos costaría 6 meses. Ese es el motivo real.\"" }
+        { letter: "A", text: "\"Igual necesita más espacio. Invítale directamente a aportar\"." },
+        { letter: "B", text: "\"Habría que hablarlo con él en 1:1, no en público\"." },
+        { letter: "C", text: "\"Puede que el formato no sea el suyo. ¿Cómo aporta fuera de la sala?\"" },
+        { letter: "D", text: "\"Depende del rol. Si su valor está en el output, no es problema\"." }
       ]
     },
     {
       id: 19,
-      q: "La PM (Sara) te dice \"es solo cambiar un texto\". Tu reacción real:",
+      q: "Un compi te pregunta \"¿te va bien pair programming?\". Tu respuesta honesta:",
       options: [
-        { letter: "A", text: "\"Vale, pásame el copy y en 5 min\". Confío." },
-        { letter: "B", text: "\"Depende. ¿Es un texto o son 15 traducciones?\"" },
-        { letter: "C", text: "\"Nunca es solo cambiar un texto. Nunca.\"" },
-        { letter: "D", text: "Sonrío. Estimo 4 horas. El tiempo reservado nunca se pierde." }
+        { letter: "A", text: "\"Sí. Vamos, y así lo sacamos entre dos\"." },
+        { letter: "B", text: "\"Sí, si te sirve. Cuando quieras\"." },
+        { letter: "C", text: "\"Depende de la tarea. Para algunas sí, para otras me atasca más\"." },
+        { letter: "D", text: "\"Solo si es más rápido que hacerlo por separado\"." }
       ]
     },
     {
       id: 20,
-      q: "La PM te pregunta \"¿cuánto tarda X?\" antes de leer el ticket que ella misma abrió ayer. Le respondes:",
+      q: "La lead pregunta \"¿quién quiere presentar la demo?\". Silencio incómodo. Tú:",
       options: [
-        { letter: "A", text: "\"Léelo primero y me preguntas\". Directa." },
-        { letter: "B", text: "\"Te lo cuento por Meet\" y de paso alineamos contexto." },
-        { letter: "C", text: "Le pego el link al ticket que ella escribió." },
-        { letter: "D", text: "Doble del peor caso. La reeducación es una virtud." }
+        { letter: "A", text: "\"Yo voy\"." },
+        { letter: "B", text: "\"Yo, si nadie más quiere. Pero rotemos para el próximo\"." },
+        { letter: "C", text: "\"Que la presente quien más la trabajó, tiene el contexto entero\"." },
+        { letter: "D", text: "\"Yo si me toca. Pero pactemos rotación, no siempre la misma\"." }
       ]
     }
   ];
