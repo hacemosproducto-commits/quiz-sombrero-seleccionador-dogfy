@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Sombrero Seleccionador · Retro IT Hogwarts</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700;900&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment-1: #efd9a6;
+    --parchment-2: #d9b46a;
+    --parchment-3: #b8894a;
+    --ink: #2b1608;
+    --ink-2: #3b1f0a;
+    --ink-3: #5a2f0e;
+    --ink-4: #6b3d17;
+    --seal: #5a1a0a;
+
+    --gryffindor: #6b1a0f;
+    --gryffindor-2: #d4a017;
+    --slytherin: #0e4a2a;
+    --slytherin-2: #a5a5a5;
+    --hufflepuff: #8a6a10;
+    --hufflepuff-2: #2b1608;
+    --ravenclaw: #133c68;
+    --ravenclaw-2: #7a5a2e;
+  }
+
+  html, body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background: #0d0704;
+    min-height: 100vh;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(90,50,20,0.25), transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(60,30,10,0.35), transparent 60%),
+      linear-gradient(160deg, #1a0f06 0%, #0d0704 100%);
+    padding: 24px 16px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .parchment {
+    max-width: 640px;
+    width: 100%;
+    background:
+      radial-gradient(ellipse 200px 260px at 0% 0%, rgba(20,8,3,0.35), transparent 60%),
+      radial-gradient(ellipse 200px 260px at 100% 0%, rgba(20,8,3,0.35), transparent 60%),
+      radial-gradient(ellipse 200px 260px at 0% 100%, rgba(20,8,3,0.40), transparent 60%),
+      radial-gradient(ellipse 200px 260px at 100% 100%, rgba(20,8,3,0.40), transparent 60%),
+      radial-gradient(circle 100px at 20% 30%, rgba(90,55,20,0.20), transparent 65%),
+      radial-gradient(circle 80px at 80% 65%, rgba(90,55,20,0.20), transparent 65%),
+      linear-gradient(160deg, var(--parchment-1) 0%, #e6c98a 30%, var(--parchment-2) 60%, var(--parchment-3) 100%);
+    padding: 40px 32px 32px;
+    border-radius: 4px;
+    box-shadow:
+      0 0 0 2px var(--ink-2),
+      0 0 0 4px transparent,
+      0 0 0 5px var(--ink-2),
+      0 20px 60px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .parchment::before {
+    content: "";
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px solid var(--ink-2);
+    pointer-events: none;
+    border-radius: 2px;
+  }
+
+  .screen { animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hidden { display: none; }
+
+  /* Turn counter top */
+  .turn-header {
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .turn-counter {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+  }
+
+  /* Welcome */
+  .welcome { text-align: center; }
+
+  .hat-svg {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 12px;
+    display: block;
+    color: var(--ink-2);
+  }
+
+  .kicker {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .latin {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--ink-4);
+    margin-bottom: 20px;
+  }
+
+  .intro-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    padding: 0 8px;
+  }
+
+  .rules {
+    background: rgba(255,255,255,0.15);
+    border: 1px dashed var(--ink-3);
+    padding: 14px 16px;
+    margin: 16px 0 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--ink-2);
+    text-align: left;
+    border-radius: 3px;
+    line-height: 1.5;
+  }
+  .rules strong { color: var(--ink); }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    color: var(--ink-3);
+  }
+  .divider .line { flex: 1; height: 1px; background: var(--ink-3); }
+  .divider .ornament { font-size: 14px; }
+
+  .name-input {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 16px;
+    padding: 12px 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    background: rgba(255,255,255,0.4);
+    border: 1.5px solid var(--ink-3);
+    border-radius: 3px;
+    text-align: center;
+  }
+  .name-input:focus {
+    outline: none;
+    border-color: var(--ink);
+    background: rgba(255,255,255,0.6);
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    background: var(--ink-2);
+    color: var(--parchment-1);
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 0.15s ease, background 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .btn:hover:not(:disabled) { background: var(--ink); transform: translateY(-1px); }
+  .btn:active:not(:disabled) { transform: translateY(1px); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .btn-big {
+    padding: 18px 40px;
+    font-size: 15px;
+  }
+
+  /* Turn intro screen */
+  .turn-intro {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .turn-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: 3px;
+    color: var(--ink);
+    margin: 12px 0 8px;
+    line-height: 1.1;
+  }
+  .turn-lead {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-2);
+    margin-bottom: 24px;
+  }
+
+  /* Question screen */
+  .progress {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--ink-4);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: rgba(90,50,20,0.2);
+    border-radius: 2px;
+    margin: 0 auto 24px;
+    overflow: hidden;
+    max-width: 200px;
+  }
+  .progress-bar-inner {
+    height: 100%;
+    background: var(--ink-2);
+    transition: width 0.4s ease;
+  }
+
+  .q-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1.35;
+    text-align: center;
+    margin: 8px 0 24px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid var(--ink-3);
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.35;
+    transition: all 0.15s ease;
+  }
+
+  .option:hover {
+    background: rgba(255,255,255,0.35);
+    border-color: var(--ink-2);
+    transform: translateX(2px);
+  }
+
+  .option.selected {
+    background: var(--ink-2);
+    color: var(--parchment-1);
+    border-color: var(--ink);
+  }
+
+  .option .letter {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    color: var(--ink-4);
+    flex-shrink: 0;
+  }
+  .option.selected .letter { color: var(--parchment-2); }
+
+  /* Result screen */
+  .result { text-align: center; }
+
+  .result-kicker {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .result-lead {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-2);
+    margin-bottom: 8px;
+  }
+  .result-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink-2);
+    margin-bottom: 4px;
+  }
+
+  .house-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: 4px;
+    line-height: 1;
+    margin: 16px 0 6px;
+    animation: revealHouse 0.9s ease;
+  }
+  @keyframes revealHouse {
+    0% { opacity: 0; transform: scale(0.7); letter-spacing: 20px; }
+    60% { opacity: 1; transform: scale(1.08); letter-spacing: 6px; }
+    100% { opacity: 1; transform: scale(1); letter-spacing: 4px; }
+  }
+
+  .house-motto {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .house-icon {
+    width: 90px;
+    height: 90px;
+    margin: 8px auto 12px;
+    display: block;
+  }
+
+  .house-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin: 12px 8px 20px;
+    font-style: italic;
+  }
+
+  .house-traits {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    margin: 8px 0 20px;
+  }
+
+  .h-gryffindor { color: var(--gryffindor); }
+  .h-slytherin { color: var(--slytherin); }
+  .h-hufflepuff { color: var(--hufflepuff); }
+  .h-ravenclaw { color: var(--ravenclaw); }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink-2);
+    border: 1.5px solid var(--ink-3);
+  }
+  .btn-secondary:hover:not(:disabled) { background: rgba(90,50,20,0.1); }
+
+  /* Log at bottom / Summary */
+  .log {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(90,50,20,0.4);
+  }
+  .log-title {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .log-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.12);
+    border-left: 3px solid var(--ink-3);
+    border-radius: 0 2px 2px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+  }
+  .log-entry .who {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .log-entry .his-house {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* Summary screen */
+  .summary { text-align: center; }
+  .summary-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .summary-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-2);
+    margin-bottom: 20px;
+  }
+  .house-tally {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 12px 0 20px;
+  }
+  .tally {
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid var(--ink-3);
+    border-radius: 3px;
+    text-align: center;
+  }
+  .tally .h-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .tally .h-count {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+
+  .seal-footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(90,50,20,0.3);
+  }
+
+  .seal-svg {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 6px;
+    display: block;
+  }
+
+  .footer-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .parchment { padding: 32px 20px 24px; }
+    h1 { font-size: 24px; letter-spacing: 2px; }
+    .turn-name { font-size: 34px; }
+    .house-name { font-size: 34px; letter-spacing: 3px; }
+    .summary-title { font-size: 24px; }
+    .q-text { font-size: 17px; }
+    .option { font-size: 15px; padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="parchment">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="hat" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2">
+          <path d="M50 12 Q 42 22 44 38 Q 46 50 42 62 L 20 82 Q 30 88 50 86 Q 74 84 82 80 L 68 62 Q 62 54 60 44 Q 58 32 56 24 Q 54 16 50 12 Z" fill="rgba(90,50,20,0.15)"/>
+          <ellipse cx="50" cy="82" rx="32" ry="6" fill="rgba(60,30,10,0.2)"/>
+          <path d="M28 78 Q 50 74 72 78"/>
+          <path d="M40 62 Q 44 60 46 63" stroke-width="1.5"/>
+          <path d="M56 62 Q 60 60 62 63" stroke-width="1.5"/>
+          <path d="M42 70 Q 50 72 58 70" stroke-width="1.5"/>
+          <path d="M48 22 Q 52 28 50 36" stroke-width="1"/>
+          <path d="M55 30 Q 58 38 56 44" stroke-width="1"/>
+        </g>
+      </symbol>
+
+      <symbol id="seal" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="42" fill="#5a1a0a" stroke="#3a0d05" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="34" fill="none" stroke="#7a2a12" stroke-width="0.8" stroke-dasharray="1 2"/>
+        <text x="50" y="60" text-anchor="middle" font-family="Cinzel Decorative, serif" font-size="30" font-weight="900" fill="#3a0d05">H</text>
+      </symbol>
+
+      <symbol id="ico-lion" viewBox="0 0 100 100">
+        <g fill="currentColor" stroke="currentColor" stroke-linejoin="round" stroke-width="1">
+          <circle cx="50" cy="50" r="30" fill="none" stroke-width="2"/>
+          <path d="M50 30 Q 42 30 38 36 Q 32 32 30 38 Q 26 40 28 46 Q 24 50 28 56 Q 26 62 32 64 Q 34 70 40 70 L 60 70 Q 66 70 68 64 Q 74 62 72 56 Q 76 50 72 46 Q 74 40 70 38 Q 68 32 62 36 Q 58 30 50 30 Z" fill="currentColor"/>
+          <circle cx="43" cy="48" r="2" fill="#f4e8c8"/>
+          <circle cx="57" cy="48" r="2" fill="#f4e8c8"/>
+          <path d="M46 58 Q 50 60 54 58" fill="none" stroke="#f4e8c8" stroke-width="1.5"/>
+        </g>
+      </symbol>
+
+      <symbol id="ico-snake" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+          <path d="M30 20 Q 55 20 60 35 Q 65 50 45 55 Q 25 60 30 75 Q 35 85 55 82 Q 70 80 72 70"/>
+          <circle cx="72" cy="70" r="3" fill="currentColor"/>
+          <path d="M28 18 Q 22 22 28 25" stroke-width="2"/>
+          <path d="M32 22 L 34 26" stroke-width="1.5"/>
+        </g>
+      </symbol>
+
+      <symbol id="ico-badger" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2">
+          <ellipse cx="50" cy="55" rx="28" ry="22" fill="rgba(138,106,16,0.15)"/>
+          <path d="M50 35 L 42 45 L 42 62 L 34 68"/>
+          <path d="M50 35 L 58 45 L 58 62 L 66 68"/>
+          <circle cx="42" cy="52" r="2.5" fill="currentColor"/>
+          <circle cx="58" cy="52" r="2.5" fill="currentColor"/>
+          <path d="M46 60 Q 50 63 54 60"/>
+          <ellipse cx="50" cy="63" rx="3" ry="2" fill="currentColor"/>
+        </g>
+      </symbol>
+
+      <symbol id="ico-eagle" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5">
+          <path d="M50 30 Q 45 40 48 55 Q 50 65 50 78"/>
+          <path d="M48 55 Q 25 55 15 40 Q 20 50 30 55 Q 15 60 12 72 Q 22 62 32 62 Q 22 72 25 82 Q 32 74 40 70"/>
+          <path d="M52 55 Q 75 55 85 40 Q 80 50 70 55 Q 85 60 88 72 Q 78 62 68 62 Q 78 72 75 82 Q 68 74 60 70"/>
+          <path d="M50 30 L 46 26 M 50 30 L 54 26"/>
+          <circle cx="50" cy="38" r="1.5" fill="currentColor"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- WELCOME SCREEN -->
+  <div id="welcome" class="screen welcome">
+    <svg class="hat-svg"><use href="#hat"/></svg>
+    <div class="kicker">Sprint Retro · IT · Hogwarts</div>
+    <h1>EL SOMBRERO<br>SELECCIONADOR</h1>
+    <div class="latin">— Quaestiones ad Domum Eligendam —</div>
+
+    <p class="intro-text">
+      "Bienvenidos. Sois cinco magos y magas del Departamento de IT.<br>
+      A cada uno le tocarán cuatro preguntas distintas de un pergamino de veinte.<br>
+      El que se siente aquí primero, se sienta primero. Sin trampas."
+    </p>
+
+    <div class="divider"><span class="line"></span><span class="ornament">⚜</span><span class="line"></span></div>
+
+    <button class="btn btn-big" onclick="startTurn()">Empezar primer turno</button>
+
+    <div class="seal-footer">
+      <svg class="seal-svg"><use href="#seal"/></svg>
+      <div class="footer-text">Dogfydiet · Sprint Retro</div>
+    </div>
+  </div>
+
+  <!-- TURN INTRO SCREEN -->
+  <div id="turn-intro" class="screen hidden">
+    <div class="turn-header">
+      <div class="turn-counter" id="turn-counter-1">Turno 1 de 5</div>
+    </div>
+    <div class="turn-intro">
+      <svg class="hat-svg"><use href="#hat"/></svg>
+      <div class="kicker">Siéntate aquí</div>
+      <div class="turn-name">¿Quién juega?</div>
+      <div class="turn-lead">Escribe tu nombre y responde en alto.</div>
+
+      <input type="text" id="player-name" class="name-input" placeholder="Tu nombre" maxlength="20" onkeypress="if(event.key==='Enter') beginQuestions()">
+
+      <button class="btn btn-big" onclick="beginQuestions()">Empezar mis 4 preguntas</button>
+    </div>
+    <div id="log-container-1" class="log hidden">
+      <div class="log-title">Casas asignadas hasta ahora</div>
+      <div class="log-list" id="log-list-1"></div>
+    </div>
+  </div>
+
+  <!-- QUESTION SCREEN -->
+  <div id="question" class="screen hidden">
+    <div class="turn-header">
+      <div class="turn-counter" id="turn-counter-2">Turno 1 de 5 · <span id="player-label"></span></div>
+    </div>
+    <div class="progress" id="progress-text">Pregunta 1 / 4</div>
+    <div class="progress-bar"><div class="progress-bar-inner" id="progress-bar" style="width:25%"></div></div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options"></div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="result" class="screen hidden result">
+    <div class="turn-header">
+      <div class="turn-counter" id="turn-counter-3">Turno 1 de 5</div>
+    </div>
+    <div class="result-kicker">El Sombrero ha decidido</div>
+    <div class="result-name" id="result-name"></div>
+    <div class="result-lead">"Perteneces a…"</div>
+    <div class="house-name" id="house-name"></div>
+    <div class="house-motto" id="house-motto"></div>
+    <svg class="house-icon" id="house-icon-svg"></svg>
+    <div class="house-traits" id="house-traits"></div>
+    <div class="house-desc" id="house-desc"></div>
+
+    <div class="divider"><span class="line"></span><span class="ornament">⚜</span><span class="line"></span></div>
+
+    <div class="actions">
+      <button class="btn" id="next-btn" onclick="nextTurn()">Siguiente turno</button>
+    </div>
+
+    <div id="log-container-2" class="log">
+      <div class="log-title">Casas asignadas</div>
+      <div class="log-list" id="log-list-2"></div>
+    </div>
+  </div>
+
+  <!-- SUMMARY SCREEN -->
+  <div id="summary" class="screen hidden summary">
+    <svg class="hat-svg"><use href="#hat"/></svg>
+    <div class="kicker">La ceremonia ha terminado</div>
+    <h1 class="summary-title">COPA<br>DE LAS CASAS</h1>
+    <div class="summary-subtitle">Cinco magos, cuatro casas, un sprint.</div>
+
+    <div class="log-list" id="log-list-3" style="margin-bottom: 16px;"></div>
+
+    <div class="divider"><span class="line"></span><span class="ornament">⚜</span><span class="line"></span></div>
+
+    <div class="kicker" style="margin-bottom: 10px;">Recuento por casa</div>
+    <div class="house-tally" id="house-tally"></div>
+
+    <div class="divider"><span class="line"></span><span class="ornament">⚜</span><span class="line"></span></div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="resetAll()">Repetir todo</button>
+    </div>
+
+    <div class="seal-footer">
+      <svg class="seal-svg"><use href="#seal"/></svg>
+      <div class="footer-text">Dogfydiet · Sprint Retro · Hogwarts</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ========== QUESTION POOL (20 questions, IT-focused with 2 PM comedy) ==========
+  const pool = [
+    {
+      id: 1,
+      q: "\"En mi local funciona.\" Un compi te lo suelta cuando falla en producción. Tu reacción real:",
+      options: [
+        { letter: "A", text: "\"Vale, lo despliego yo mismo y lo miro allí.\"" },
+        { letter: "B", text: "\"Sentémonos 10 min, lo miramos juntos y salimos con algo.\"" },
+        { letter: "C", text: "\"Diff entre entornos: variables, versiones, caché. Empezamos por ahí.\"" },
+        { letter: "D", text: "\"¿Qué usuario ve el fallo y cuánto pesa? Priorizamos y actuamos.\"" }
+      ]
+    },
+    {
+      id: 2,
+      q: "Alguien del equipo ha hecho `git push --force` a main. Tu primera reacción:",
+      options: [
+        { letter: "A", text: "Rollback ya. Luego hablamos sin dramatizar." },
+        { letter: "B", text: "Le pregunto qué ha pasado. Todos hemos estado ahí." },
+        { letter: "C", text: "Abro un post-mortem escrito antes incluso de arreglarlo del todo." },
+        { letter: "D", text: "\"Que no vuelva a pasar\" + branch protection activada esta tarde." }
+      ]
+    },
+    {
+      id: 3,
+      q: "Un compi abre un PR titulado \"WIP: cambios varios\". 40 archivos tocados, cero descripción. Tú:",
+      options: [
+        { letter: "A", text: "Le pido que lo divida en trozos. Con firmeza." },
+        { letter: "B", text: "Le pregunto por Slack si me cuenta primero qué pretende." },
+        { letter: "C", text: "Le pongo 3 preguntas en el PR: qué problema, por qué así, cómo se prueba." },
+        { letter: "D", text: "Cierro el PR: \"lo abres cuando sepas qué quieres que revise\"." }
+      ]
+    },
+    {
+      id: 4,
+      q: "Merge conflict de 400 líneas con un compi de otro equipo. Tu movida:",
+      options: [
+        { letter: "A", text: "\"Me pongo. Yo lo saco.\"" },
+        { letter: "B", text: "\"Lo hacemos juntos 15 min y salimos con algo.\"" },
+        { letter: "C", text: "Voy commit a commit entendiendo la intención de cada parte." },
+        { letter: "D", text: "Acepto todo lo suyo, luego PR pequeño con mis cambios encima." }
+      ]
+    },
+    {
+      id: 5,
+      q: "Un compañero mete un PR de 900 líneas un miércoles. Tú:",
+      options: [
+        { letter: "A", text: "\"Me lo llevo. Lo reviso esta noche.\"" },
+        { letter: "B", text: "\"Le pregunto si podemos partirlo. Con mucho cariño.\"" },
+        { letter: "C", text: "Le pongo 47 comentarios. Es lo que se merece." },
+        { letter: "D", text: "Approve si compila y hay tests. Al siguiente PR." }
+      ]
+    },
+    {
+      id: 6,
+      q: "Otro compi mete un commit con mensaje \"asdf\". Tú:",
+      options: [
+        { letter: "A", text: "Le pincho por Slack: \"ese mensaje es de traca\"." },
+        { letter: "B", text: "Se lo digo por privado, sin humillar en el canal." },
+        { letter: "C", text: "Abro el diff y ni miro el mensaje. Bloqueo cognitivo." },
+        { letter: "D", text: "Apruebo. La reeducación es una carrera larga." }
+      ]
+    },
+    {
+      id: 7,
+      q: "Empiezas a leer un archivo legacy y encuentras: \"// no toques esto, no sé por qué funciona\". Tú:",
+      options: [
+        { letter: "A", text: "Reto aceptado. Hoy lo entiendo o no me llamo como me llamo." },
+        { letter: "B", text: "Respeto la advertencia. Rodeo. Otra vía." },
+        { letter: "C", text: "Abro git blame. Empieza la arqueología." },
+        { letter: "D", text: "Documento que aquí hay dragones y sigo mi camino." }
+      ]
+    },
+    {
+      id: 8,
+      q: "El `npm install` (o el equivalente) te falla por algo random. Tu ritual:",
+      options: [
+        { letter: "A", text: "`rm -rf node_modules && npm i`. El clásico." },
+        { letter: "B", text: "Pregunto al canal si a alguien más le pasa." },
+        { letter: "C", text: "Leo el error hasta el final. Todo tiene una razón." },
+        { letter: "D", text: "Cambio de versión de Node y vuelvo a intentar. Lo demás es perder tiempo." }
+      ]
+    },
+    {
+      id: 9,
+      q: "Configurar el entorno de dev de un proyecto que llevas 6 meses sin tocar. Tu experiencia real:",
+      options: [
+        { letter: "A", text: "30 minutos. Sigo el README y para adelante." },
+        { letter: "B", text: "Un día, y de paso actualizo el README para el siguiente." },
+        { letter: "C", text: "Tres días descubriendo por qué el README está mal desde 2023." },
+        { letter: "D", text: "Le pido al que ya lo tiene funcionando que me clone su carpeta." }
+      ]
+    },
+    {
+      id: 10,
+      q: "Copilot / Cursor te propone una solución que parece buena. Tu instinto real:",
+      options: [
+        { letter: "A", text: "Si compila, funciona. Adelante." },
+        { letter: "B", text: "La leo entera y le pongo tests antes de aceptar." },
+        { letter: "C", text: "La reescribo a mi manera. Seguro que hay una mejor." },
+        { letter: "D", text: "La uso solo si me ahorra tiempo real medible." }
+      ]
+    },
+    {
+      id: 11,
+      q: "Deploy del viernes a las 16:47. Alguien pregunta \"¿lo hacemos?\". Tu voto:",
+      options: [
+        { letter: "A", text: "\"Sí. Si está probado, sale.\"" },
+        { letter: "B", text: "\"Depende de quién esté de guardia este finde.\"" },
+        { letter: "C", text: "\"Sí, pero con feature flag y monitorización activa.\"" },
+        { letter: "D", text: "\"No. Lunes por la mañana. No hay más que hablar.\"" }
+      ]
+    },
+    {
+      id: 12,
+      q: "Bug reportado con el texto: \"no funciona\". Sin pasos, sin screenshot, sin nada. Tú:",
+      options: [
+        { letter: "A", text: "Le pido por Slack los pasos exactos. Sin drama." },
+        { letter: "B", text: "Intento reproducirlo por mi cuenta. Me curro yo el contexto." },
+        { letter: "C", text: "Devuelvo el ticket pidiendo información. Sin repro no se toca." },
+        { letter: "D", text: "\"¿Qué se rompe en negocio?\" antes de invertir un minuto." }
+      ]
+    },
+    {
+      id: 13,
+      q: "Producción se cae un domingo por la noche. Suena la notificación. Tú:",
+      options: [
+        { letter: "A", text: "Me pongo. Alguien tiene que empezar." },
+        { letter: "B", text: "Miro el grupo de guardia. Coordino con quien esté online." },
+        { letter: "C", text: "Dashboards antes de tocar nada. Entender primero." },
+        { letter: "D", text: "Aviso arriba, evalúo criticidad real, y decido si es cosa de YA." }
+      ]
+    },
+    {
+      id: 14,
+      q: "Alguien encuentra un `console.log(\"aquí\")` tuyo en producción. Tu reacción honesta:",
+      options: [
+        { letter: "A", text: "Lo quito y ya está. Sin más." },
+        { letter: "B", text: "Perdón general al canal y PR con el fix ahora." },
+        { letter: "C", text: "Añado una regla de lint para que no vuelva a pasar." },
+        { letter: "D", text: "Confirmo primero que ese log no está aportando telemetría útil." }
+      ]
+    },
+    {
+      id: 15,
+      q: "Un test lleva semanas fallando aleatoriamente en CI. Reaccionas:",
+      options: [
+        { letter: "A", text: "Le meto mano hoy. Se acabó ejecutar el workflow tres veces." },
+        { letter: "B", text: "Pregunto quién lo escribió por si tiene contexto que ayude." },
+        { letter: "C", text: "Documento el patrón de fallo antes de tocar nada." },
+        { letter: "D", text: "Lo skippo con un TODO y ticket prioridad baja. Otro día." }
+      ]
+    },
+    {
+      id: 16,
+      q: "En un PR de un compi ves una función llamada `doStuff()`. Sin comentarios. Tú:",
+      options: [
+        { letter: "A", text: "Renombro yo en un PR pequeño y lo mando." },
+        { letter: "B", text: "Le sugiero dos nombres mejores en el review." },
+        { letter: "C", text: "Le pongo un JSDoc porque el nombre no lo voy a arreglar solo." },
+        { letter: "D", text: "Si funciona y no la va a tocar nadie más, la dejo. Batallas justas." }
+      ]
+    },
+    {
+      id: 17,
+      q: "La CI lleva 40 minutos ejecutándose para tu PR. Reaccionas:",
+      options: [
+        { letter: "A", text: "Sigo con otra cosa. No me quedo mirándola." },
+        { letter: "B", text: "Aviso al canal por si a alguien más le pasa hoy." },
+        { letter: "C", text: "Abro la build, miro qué step se clava y por qué." },
+        { letter: "D", text: "Le paso el marrón a DevOps. Que se ocupe quien es su marco." }
+      ]
+    },
+    {
+      id: 18,
+      q: "Un new joiner pregunta \"¿por qué usamos X y no Y?\". X es una decisión de hace 4 años. Le contestas:",
+      options: [
+        { letter: "A", text: "\"Porque cuando lo elegimos era la mejor opción. Y punto.\"" },
+        { letter: "B", text: "\"Buena pregunta, te lo explico con calma\", y saco tiempo." },
+        { letter: "C", text: "*inhala* \"Depende. Cuando lo elegimos había estos trade-offs…\"" },
+        { letter: "D", text: "\"Porque cambiarlo ahora nos costaría 6 meses. Ese es el motivo real.\"" }
+      ]
+    },
+    {
+      id: 19,
+      q: "La PM (Sara) te dice \"es solo cambiar un texto\". Tu reacción real:",
+      options: [
+        { letter: "A", text: "\"Vale, pásame el copy y en 5 min\". Confío." },
+        { letter: "B", text: "\"Depende. ¿Es un texto o son 15 traducciones?\"" },
+        { letter: "C", text: "\"Nunca es solo cambiar un texto. Nunca.\"" },
+        { letter: "D", text: "Sonrío. Estimo 4 horas. El tiempo reservado nunca se pierde." }
+      ]
+    },
+    {
+      id: 20,
+      q: "La PM te pregunta \"¿cuánto tarda X?\" antes de leer el ticket que ella misma abrió ayer. Le respondes:",
+      options: [
+        { letter: "A", text: "\"Léelo primero y me preguntas\". Directa." },
+        { letter: "B", text: "\"Te lo cuento por Meet\" y de paso alineamos contexto." },
+        { letter: "C", text: "Le pego el link al ticket que ella escribió." },
+        { letter: "D", text: "Doble del peor caso. La reeducación es una virtud." }
+      ]
+    }
+  ];
+
+  const houses = {
+    A: {
+      name: "GRYFFINDOR",
+      motto: "— Fortitudo —",
+      traits: "Coraje · Iniciativa · Ir de frente",
+      desc: '"Vive donde habitan los valientes." La que se tira a la piscina cuando otros dudan y arrastra al resto con su empuje.',
+      color: "gryffindor",
+      icon: "ico-lion"
+    },
+    B: {
+      name: "HUFFLEPUFF",
+      motto: "— Fidelitas —",
+      traits: "Lealtad · Equipo · Cuidado",
+      desc: '"La casa de los justos y leales." La que sostiene al equipo cuando el suelo tiembla y no deja a nadie atrás.',
+      color: "hufflepuff",
+      icon: "ico-badger"
+    },
+    C: {
+      name: "RAVENCLAW",
+      motto: "— Sapientia —",
+      traits: "Inteligencia · Curiosidad · Análisis",
+      desc: '"Ingenio sin medida y afán de saber." La que ve el patrón antes que nadie y encuentra el detalle que cambia todo.',
+      color: "ravenclaw",
+      icon: "ico-eagle"
+    },
+    D: {
+      name: "SLYTHERIN",
+      motto: "— Ambitio —",
+      traits: "Ambición · Estrategia · Resultado",
+      desc: '"Astucia para conseguir tus fines." La que sabe qué mover para que la partida caiga del lado correcto.',
+      color: "slytherin",
+      icon: "ico-snake"
+    }
+  };
+
+  const TOTAL_PLAYERS = 5;
+  const QUESTIONS_PER_PLAYER = 4;
+
+  let playerIndex = 0;                // 0..4
+  let usedQuestionIds = new Set();
+  let currentPlayerName = "";
+  let currentQuestions = [];          // the 4 questions for this turn
+  let currentQuestionIndex = 0;
+  let currentScores = { A: 0, B: 0, C: 0, D: 0 };
+  let results = [];                    // { name, house, color }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function hideAll() {
+    ['welcome', 'turn-intro', 'question', 'result', 'summary'].forEach(id => {
+      document.getElementById(id).classList.add('hidden');
+    });
+  }
+
+  function show(id) {
+    hideAll();
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function startTurn() {
+    // Show turn intro for current playerIndex
+    document.getElementById('turn-counter-1').textContent = `Turno ${playerIndex + 1} de ${TOTAL_PLAYERS}`;
+    document.getElementById('player-name').value = "";
+    renderLogInto('log-list-1');
+    document.getElementById('log-container-1').classList.toggle('hidden', results.length === 0);
+    show('turn-intro');
+    setTimeout(() => document.getElementById('player-name').focus(), 100);
+  }
+
+  function beginQuestions() {
+    const name = document.getElementById('player-name').value.trim();
+    if (!name) {
+      document.getElementById('player-name').focus();
+      return;
+    }
+    currentPlayerName = name;
+
+    // Draw 4 unused questions
+    const unused = pool.filter(q => !usedQuestionIds.has(q.id));
+    const drawn = shuffle(unused).slice(0, QUESTIONS_PER_PLAYER);
+    drawn.forEach(q => usedQuestionIds.add(q.id));
+    currentQuestions = drawn;
+    currentQuestionIndex = 0;
+    currentScores = { A: 0, B: 0, C: 0, D: 0 };
+
+    document.getElementById('player-label').textContent = currentPlayerName;
+    document.getElementById('turn-counter-2').textContent = `Turno ${playerIndex + 1} de ${TOTAL_PLAYERS} · ${currentPlayerName}`;
+
+    show('question');
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = currentQuestions[currentQuestionIndex];
+    document.getElementById('progress-text').textContent = `Pregunta ${currentQuestionIndex + 1} / ${QUESTIONS_PER_PLAYER}`;
+    document.getElementById('progress-bar').style.width = `${(currentQuestionIndex / QUESTIONS_PER_PLAYER) * 100}%`;
+    document.getElementById('q-text').textContent = q.q;
+
+    const optionsEl = document.getElementById('options');
+    optionsEl.innerHTML = '';
+    // Randomize the order the options are presented, but keep the letter mapping
+    const shuffled = shuffle(q.options);
+    shuffled.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.innerHTML = `<span class="letter">${opt.letter}</span><span>${opt.text}</span>`;
+      btn.onclick = () => selectAnswer(opt.letter, btn);
+      optionsEl.appendChild(btn);
+    });
+
+    const qScreen = document.getElementById('question');
+    qScreen.classList.remove('screen');
+    void qScreen.offsetWidth;
+    qScreen.classList.add('screen');
+  }
+
+  function selectAnswer(letter, btn) {
+    // Disable all options
+    document.querySelectorAll('#options .option').forEach(o => o.style.pointerEvents = 'none');
+    btn.classList.add('selected');
+    currentScores[letter]++;
+    document.getElementById('progress-bar').style.width = `${((currentQuestionIndex + 1) / QUESTIONS_PER_PLAYER) * 100}%`;
+
+    setTimeout(() => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < currentQuestions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }, 400);
+  }
+
+  function showResult() {
+    const winner = Object.keys(currentScores).reduce((a, b) => currentScores[a] >= currentScores[b] ? a : b);
+    const house = houses[winner];
+
+    results.push({ name: currentPlayerName, house: house.name, color: house.color });
+
+    document.getElementById('turn-counter-3').textContent = `Turno ${playerIndex + 1} de ${TOTAL_PLAYERS}`;
+    document.getElementById('result-name').textContent = currentPlayerName;
+
+    const nameEl = document.getElementById('house-name');
+    nameEl.textContent = house.name;
+    nameEl.className = `house-name h-${house.color}`;
+
+    const mottoEl = document.getElementById('house-motto');
+    mottoEl.textContent = house.motto;
+    mottoEl.className = `house-motto h-${house.color}`;
+
+    document.getElementById('house-traits').textContent = house.traits;
+    document.getElementById('house-desc').textContent = house.desc;
+
+    const iconSvg = document.getElementById('house-icon-svg');
+    iconSvg.innerHTML = `<use href="#${house.icon}"/>`;
+    iconSvg.className = `house-icon h-${house.color}`;
+
+    renderLogInto('log-list-2');
+
+    const nextBtn = document.getElementById('next-btn');
+    if (playerIndex + 1 >= TOTAL_PLAYERS) {
+      nextBtn.textContent = "Ver Copa de las Casas";
+      nextBtn.onclick = showSummary;
+    } else {
+      nextBtn.textContent = "Siguiente turno";
+      nextBtn.onclick = nextTurn;
+    }
+
+    show('result');
+    const rScreen = document.getElementById('result');
+    rScreen.classList.remove('screen');
+    void rScreen.offsetWidth;
+    rScreen.classList.add('screen');
+  }
+
+  function nextTurn() {
+    playerIndex++;
+    if (playerIndex >= TOTAL_PLAYERS) {
+      showSummary();
+      return;
+    }
+    startTurn();
+  }
+
+  function renderLogInto(elementId) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    if (results.length === 0) {
+      el.innerHTML = '<div style="text-align:center;font-family:Cormorant Garamond, serif;font-style:italic;color:var(--ink-3);padding:8px;">Aún no hay casas asignadas.</div>';
+      return;
+    }
+    el.innerHTML = results.map(r =>
+      `<div class="log-entry"><span class="who">${escapeHtml(r.name)}</span><span class="his-house h-${r.color}">${r.house}</span></div>`
+    ).join('');
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function showSummary() {
+    renderLogInto('log-list-3');
+
+    // Tally
+    const tally = { GRYFFINDOR: 0, HUFFLEPUFF: 0, RAVENCLAW: 0, SLYTHERIN: 0 };
+    results.forEach(r => tally[r.house]++);
+    const tallyEl = document.getElementById('house-tally');
+    tallyEl.innerHTML = Object.entries(tally).map(([house, count]) => {
+      const color = Object.values(houses).find(h => h.name === house).color;
+      return `<div class="tally"><div class="h-name h-${color}">${house}</div><div class="h-count h-${color}">${count}</div></div>`;
+    }).join('');
+
+    show('summary');
+  }
+
+  function resetAll() {
+    playerIndex = 0;
+    usedQuestionIds = new Set();
+    currentPlayerName = "";
+    currentQuestions = [];
+    currentQuestionIndex = 0;
+    currentScores = { A: 0, B: 0, C: 0, D: 0 };
+    results = [];
+    show('welcome');
+  }
+</script>
+
+</body>
+</html>
