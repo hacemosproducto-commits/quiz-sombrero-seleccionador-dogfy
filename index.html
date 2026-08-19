@@ -650,7 +650,7 @@
   <!-- QUESTION SCREEN -->
   <div id="question" class="screen hidden">
     <div class="turn-header">
-      <div class="turn-counter" id="turn-counter-2">Turno 1 de 5 · <span id="player-label"></span></div>
+      <div class="turn-counter" id="turn-counter-2"><span id="turn-label-2">Turno 1 de 5</span> · <span id="player-label"></span></div>
     </div>
     <div class="progress" id="progress-text">Pregunta 1 / 4</div>
     <div class="progress-bar"><div class="progress-bar-inner" id="progress-bar" style="width:25%"></div></div>
@@ -1009,8 +1009,8 @@
     currentQuestionIndex = 0;
     currentScores = { A: 0, B: 0, C: 0, D: 0 };
 
+    document.getElementById('turn-label-2').textContent = `Turno ${playerIndex + 1} de ${TOTAL_PLAYERS}`;
     document.getElementById('player-label').textContent = currentPlayerName;
-    document.getElementById('turn-counter-2').textContent = `Turno ${playerIndex + 1} de ${TOTAL_PLAYERS} · ${currentPlayerName}`;
 
     show('question');
     renderQuestion();
